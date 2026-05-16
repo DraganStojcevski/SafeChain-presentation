@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SafeChain MK — The Trust Layer Between Citizens and Government</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            violet:  '#8EA4FF',
+            cyan:    '#61E6D8',
+            rose:    '#FF6F84',
+            amber:   '#D6B45F',
+          },
+        }
+      }
+    };
+  </script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    /* ════════════════════════════════════════════════════════════════
+       SafeChain MK — Cinematic sovereign-tech design system
+       Government credibility, startup sharpness, blockchain luxury.
+       ════════════════════════════════════════════════════════════════ */
+    :root {
+      --canvas:    #05070F;
+      --canvas-2:  #02040A;
+      --surface-1: #0B1020;
+      --surface-2: #11172B;
+      --hairline:        rgba(255,255,255,0.07);
+      --hairline-strong: rgba(255,255,255,0.13);
+      --text:      #F6F4EA;
+      --text-dim:  #B5B9C7;
+      --text-mut:  #697184;
+      --violet:    #8EA4FF;
+      --violet-2:  #B8C4FF;
+      --cyan:      #61E6D8;
+      --rose:      #FF6F84;
+      --amber:     #D6B45F;
+      --gold-soft: #E7D7A1;
+    }
+
+    html, body, #root { height: 100%; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse 66% 54% at 50% -12%, rgba(85,103,168,0.22), transparent 66%),
+        radial-gradient(ellipse 54% 42% at 78% 106%, rgba(97,230,216,0.08), transparent 68%),
+        linear-gradient(180deg, #071024 0%, var(--canvas) 46%, var(--canvas-2) 100%);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      letter-spacing: -0.006em;
+    }
+
+    /* Fine film grain — keeps the dark from banding, adds a premium tactility */
+    body::after {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      mix-blend-mode: overlay;
+    }
+
+    ::selection { background: rgba(214,180,95,0.30); color: #fff; }
+    ::-webkit-scrollbar { width: 0; height: 0; }
+
+    /* ——— Slide transitions ———
+       Entering slide animates transform only (opacity stays 1) so a paused
+       capture is always visible. Leaving slide is free to fade. */
+    @keyframes slideIn  { from { transform: translate3d(0,20px,0); } to { transform: none; } }
+    @keyframes slideOut { from { opacity: 1; transform: none; }
+                          to   { opacity: 0; transform: translate3d(0,-16px,0); filter: blur(3px); } }
+    .slide-enter { animation: slideIn  .72s cubic-bezier(.2,.7,.2,1) both; opacity: 1; }
+    .slide-leave { animation: slideOut .42s cubic-bezier(.4,0,.2,1) both; }
+
+    /* ——— Staggered settle ———
+       Children carry --i; transform-only so exports stay legible mid-frame. */
+    @keyframes riseUp { from { transform: translate3d(0,26px,0); } to { transform: none; } }
+    .rise      { animation: riseUp .9s  cubic-bezier(.2,.7,.2,1) backwards;
+                 animation-delay: calc(var(--i,0) * 85ms + 130ms); }
+    .rise-slow { animation: riseUp 1.2s cubic-bezier(.2,.7,.2,1) backwards;
+                 animation-delay: calc(var(--i,0) * 120ms + 160ms); }
+    @media (prefers-reduced-motion: reduce) {
+      .rise, .rise-slow, .slide-enter, .slide-leave,
+      .breathe, .drift-a, .drift-b, .particle, .spin-slow { animation: none !important; }
+    }
+
+    /* ——— Typography helpers ——— */
+    .display       { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 500;
+                     letter-spacing: -0.03em; line-height: 1.02; }
+    .display-tight { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 600;
+                     letter-spacing: -0.042em; line-height: 0.95; }
+    .tabular { font-variant-numeric: tabular-nums; }
+
+    /* Accent colour — used solid, sparingly, never as a wash */
+    .ac-violet { color: var(--violet); }
+    .ac-cyan   { color: var(--cyan); }
+    .ac-rose   { color: var(--rose); }
+    .ac-amber  { color: var(--amber); }
+
+    /* Soft white halo for hero type — whisper-quiet */
+    .glow-soft   { text-shadow: 0 0 56px rgba(243,244,248,0.16); }
+    .glow-violet { text-shadow: 0 0 44px rgba(142,164,255,0.34); }
+    .glow-rose   { text-shadow: 0 0 40px rgba(255,111,132,0.34); }
+
+    /* One refined gradient, reserved for the closing climax line only */
+    .grad-climax {
+      background: linear-gradient(104deg, #FFFFFF 6%, var(--gold-soft) 44%, var(--cyan) 92%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* ——— Surfaces ——— */
+    .panel {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.008)),
+        linear-gradient(180deg, #10172A 0%, #080B15 100%);
+      border: 1px solid var(--hairline);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.045),
+                  0 30px 64px -34px rgba(0,0,0,0.9);
+    }
+    .panel-quiet {
+      background: rgba(255,255,255,0.018);
+      border: 1px solid var(--hairline);
+    }
+    .panel-glass {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.012)),
+        rgba(9,14,28,0.68);
+      border: 1px solid var(--hairline-strong);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    /* Hairline rule */
+    .hr-soft { height: 1px; background: linear-gradient(90deg, transparent, var(--hairline-strong) 22%, var(--hairline-strong) 78%, transparent); }
+
+    /* Single hero halo per slide — the one place colour glows */
+    .halo-violet { box-shadow: 0 0 110px -30px rgba(142,164,255,0.48),
+                               inset 0 1px 0 rgba(255,255,255,0.06); }
+    .halo-cyan   { box-shadow: 0 0 110px -30px rgba(97,230,216,0.52),
+                               inset 0 1px 0 rgba(255,255,255,0.06); }
+    .halo-rose   { box-shadow: 0 0 96px -30px rgba(255,111,132,0.50),
+                               inset 0 1px 0 rgba(255,255,255,0.05); }
+
+    /* Subtle interactive lift */
+    .lift { transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s ease, box-shadow .4s ease; }
+    .lift:hover { transform: translateY(-3px); border-color: var(--hairline-strong); }
+
+    /* ——— Atmosphere ——— */
+    .grid-fade {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(45deg, rgba(214,180,95,0.028) 1px, transparent 1px);
+      background-size: 112px 112px, 112px 112px, 224px 224px;
+      mask-image: radial-gradient(ellipse 72% 64% at 50% 46%, #000 4%, transparent 82%);
+    }
+    .particle {
+      position: absolute; border-radius: 9999px;
+      background: rgba(206,210,232,0.9);
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { transform: translate3d(0,30px,0); opacity: 0; }
+      12%  { opacity: 1; }
+      88%  { opacity: 1; }
+      100% { transform: translate3d(0,-104vh,0); opacity: 0; }
+    }
+    @keyframes breathe { 0%,100% { opacity: .5; transform: scale(1); }
+                         50%     { opacity: .8; transform: scale(1.05); } }
+    .breathe { animation: breathe 16s ease-in-out infinite; }
+    @keyframes driftA { 0%,100% { transform: translate3d(0,0,0); }
+                        50%     { transform: translate3d(34px,-26px,0); } }
+    @keyframes driftB { 0%,100% { transform: translate3d(0,0,0); }
+                        50%     { transform: translate3d(-30px,22px,0); } }
+    .drift-a { animation: driftA 38s ease-in-out infinite; }
+    .drift-b { animation: driftB 44s ease-in-out infinite; }
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+    .spin-slow { animation: spinSlow 60s linear infinite; }
+
+    /* ——— Chrome ——— */
+    .progress-track { background: rgba(255,255,255,0.05); }
+    .progress-fill  {
+      background: linear-gradient(90deg, var(--amber), var(--cyan));
+      box-shadow: 0 0 16px rgba(97,230,216,0.42);
+      transition: width .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    /* Buttons */
+    .btn {
+      background: linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.03));
+      border: 1px solid var(--hairline-strong);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.09);
+      transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s ease, box-shadow .3s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(214,180,95,0.48);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 18px 44px -22px rgba(214,180,95,0.42);
+    }
+    .btn-primary {
+      background: linear-gradient(180deg, #E7D7A1 0%, #D6B45F 100%);
+      border: 1px solid rgba(231,215,161,0.72);
+      color: #090A10;
+      box-shadow: 0 14px 46px -16px rgba(214,180,95,0.72), inset 0 1px 0 rgba(255,255,255,0.48);
+      transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 60px -16px rgba(214,180,95,0.88), inset 0 1px 0 rgba(255,255,255,0.55);
+    }
+
+    /* Clip path for the Solana glyph */
+    .hex-clip { clip-path: polygon(25% 4%, 75% 4%, 99% 50%, 75% 96%, 25% 96%, 1% 50%); }
+
+    /* Focus */
+    button:focus { outline: none; }
+    button:focus-visible { outline: 1.5px solid rgba(214,180,95,0.82); outline-offset: 3px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="deck-icons.jsx"></script>
+  <script type="text/babel" src="deck-chrome.jsx"></script>
+  <script type="text/babel" src="deck-slides.jsx"></script>
+  <script type="text/babel" src="deck-app.jsx"></script>
+</body>
+</html>
