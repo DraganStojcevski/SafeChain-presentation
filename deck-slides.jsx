@@ -439,28 +439,28 @@ const Feature = ({ children, i }) => (
       background: "rgba(214,180,95,0.12)", border: "1px solid rgba(214,180,95,0.34)" }}>
       <I.Check size={12} className="ac-amber" strokeWidth={2.4} />
     </span>
-    <span style={{ fontSize: 15, lineHeight: 1.5, color: "var(--text-dim)" }}>{children}</span>
+    <span style={{ fontSize: 14.2, lineHeight: 1.45, color: "var(--text-dim)" }}>{children}</span>
   </li>
 );
 
 const Slide6 = ({ active }) => (
   <SlideRoot>
-    <div className="absolute inset-0 grid grid-cols-12 items-center gap-12"
-         style={{ padding: "clamp(52px,6vh,90px) clamp(60px,6.2vw,134px)" }}>
+    <div className="absolute inset-0 grid grid-cols-12 items-center gap-8"
+         style={{ padding: "clamp(48px,5.8vh,86px) clamp(42px,5vw,96px)" }}>
       {active && <>
-        <div className="col-span-5">
+        <div className="col-span-4">
           <div className="rise" style={{ "--i": 0 }}><Eyebrow>The Platform</Eyebrow></div>
           <h2 className="rise display-tight text-white glow-soft mt-6"
-              style={{ "--i": 1, fontSize: "clamp(34px, 3.5vw, 54px)" }}>
+              style={{ "--i": 1, fontSize: "clamp(32px, 3.2vw, 52px)" }}>
             Open the web app.<br />Enter your email.
           </h2>
-          <p className="rise mt-5 max-w-md" style={{ "--i": 2,
-             fontSize: 16.5, lineHeight: 1.58, color: "var(--text-dim)" }}>
+          <p className="rise mt-5 max-w-sm" style={{ "--i": 2,
+             fontSize: 15.5, lineHeight: 1.56, color: "var(--text-dim)" }}>
             No crypto wallet? One is created for you{" "}
             <span className="ac-violet" style={{ fontWeight: 500 }}>automatically</span>{" "}
             — the chain stays invisible.
           </p>
-          <ul className="mt-8 space-y-3.5">
+          <ul className="mt-7 space-y-3">
             <Feature i={3}>Every fine in one place — paid, unpaid, cancelled, under appeal</Feature>
             <Feature i={4}>Colour-coded violation categories</Feature>
             <Feature i={5}>Full detail — photos, location, amount due</Feature>
@@ -469,8 +469,8 @@ const Slide6 = ({ active }) => (
           </ul>
         </div>
 
-        <div className="col-span-7 flex justify-center">
-          <div className="rise panel rounded-2xl p-3 w-full" style={{ "--i": 2, maxWidth: 660 }}>
+        <div className="col-span-8 flex justify-center">
+          <div className="rise panel rounded-2xl p-3 w-full" style={{ "--i": 2, maxWidth: 980 }}>
             {/* browser chrome */}
             <div className="flex items-center gap-2 px-1.5 pb-2.5">
               <span style={{ width: 9, height: 9, borderRadius: 9, background: "rgba(255,111,132,0.55)" }} />
