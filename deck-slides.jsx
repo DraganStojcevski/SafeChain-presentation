@@ -318,23 +318,49 @@ const Slide3 = ({ active }) => (
   <SlideRoot>
     <Frame>
       {active && <>
-        <div className="rise" style={{ "--i": 0 }}><Eyebrow>The Problem — Why It Matters</Eyebrow></div>
-        <h2 className="rise display text-white glow-soft mt-5 max-w-[1180px]"
-            style={{ "--i": 1, fontSize: "clamp(38px, 4.1vw, 64px)", lineHeight: 1.07 }}>
+        <div className="rise" style={{ "--i": 0 }}>
+          <Eyebrow>The Problem — Why It Matters</Eyebrow>
+        </div>
+
+        <h2
+          className="rise display text-white glow-soft mt-5 max-w-[1180px]"
+          style={{
+            "--i": 1,
+            fontSize: "clamp(38px, 4.1vw, 64px)",
+            lineHeight: 1.07,
+          }}
+        >
           Trust between citizens and the state is being
           silently <span className="ac-violet">eroded</span>.
         </h2>
 
-        <div className="grid grid-cols-3 gap-6 mt-12" style={{ height: "clamp(330px,42vh,400px)" }}>
-          <ProblemCard idx={0} Icon={I.ShieldOff} stat="10,000"
+        <div
+          className="grid grid-cols-3 gap-6 mt-12"
+          style={{ height: "clamp(330px,42vh,400px)" }}
+        >
+          <ProblemCard
+            idx={0}
+            Icon={I.ShieldOff}
+            stat="10,000"
             statLabel="Fake SMS sent in a single afternoon"
-            body="One coordinated wave of fraud — and it repeats, quietly, every single day." />
-          <ProblemCard idx={1} Icon={I.AlertTriangle} stat="0"
+            body="One coordinated wave of fraud — and it repeats, quietly, every single day."
+          />
+
+          <ProblemCard
+            idx={1}
+            Icon={I.AlertTriangle}
+            stat="0"
             statLabel="Visual difference, real vs. fake"
-            body="A genuine government message and a scam are pixel-identical. The citizen cannot tell them apart." />
-          <ProblemCard idx={2} Icon={I.HelpCircle} stat="700K+"
+            body="A genuine government message and a scam are pixel-identical. The citizen cannot tell them apart."
+          />
+
+          <ProblemCard
+            idx={2}
+            Icon={I.HelpCircle}
+            stat="700K+"
             statLabel="Vehicles, and no way to verify"
-            body="A nation of drivers receiving official notices — with not one layer to confirm what is real." />
+            body="A nation of drivers receiving official notices — with not one layer to confirm what is real."
+          />
         </div>
       </>}
     </Frame>
@@ -754,44 +780,103 @@ const Slide8 = ({ active }) => (
 /* ─────────────────────── 09.5 — APP SCREENSHOTS ────────────────── */
 const Slide8_5 = ({ active }) => (
   <SlideRoot mood="cyan">
-    <div className="absolute inset-0 flex flex-col"
-         style={{ padding: "clamp(40px,5vh,72px) clamp(50px,5.5vw,118px)" }}>
+    <div
+      className="absolute inset-0 flex flex-col"
+      style={{
+        padding: "clamp(40px,5vh,72px) clamp(50px,5.5vw,118px)",
+      }}
+    >
       {active && (
         <>
-          <div className="rise shrink-0 mb-6" style={{ "--i": 0 }}>
-            <Eyebrow tone="cyan">Live product · SafeChain MK</Eyebrow>
+          {/* HEADER */}
+          <div className="rise shrink-0" style={{ "--i": 0 }}>
+            <Eyebrow tone="cyan">Live Product · SafeChain MK</Eyebrow>
           </div>
 
-          {/* 3-col grid: phones span full height left, desktops stack right */}
-          <div className="flex-1 min-h-0 grid gap-4"
-               style={{ gridTemplateColumns: "21% 21% 1fr", gridTemplateRows: "1fr 1fr" }}>
+          <h2
+            className="rise display text-white glow-soft mt-5"
+            style={{
+              "--i": 1,
+              fontSize: "clamp(36px,4vw,64px)",
+              lineHeight: 1.05,
+              maxWidth: "1100px",
+            }}
+          >
+            One secure platform for everything.
+          </h2>
 
-            <div className="rise relative rounded-2xl overflow-hidden"
-                 style={{ "--i": 1, gridRow: "1 / 3" }}>
-              <img src="screenshots/IMG_8421.PNG" alt="SafeChain MK mobile verify flow"
-                   className="absolute inset-0 w-full h-full"
-                   style={{ objectFit: "contain" }} />
+          <p
+            className="rise mt-6 max-w-4xl"
+            style={{
+              "--i": 2,
+              fontSize: "clamp(17px,1.4vw,23px)",
+              lineHeight: 1.65,
+              color: "var(--text-dim)",
+            }}
+          >
+            Public FAQs before login, personalized fine verification after
+            login, and a seamless mobile PWA experience that works like a
+            native app directly from your phone.
+          </p>
+
+          {/* SCREENSHOTS */}
+          <div
+            className="flex-1 min-h-0 grid gap-4 mt-10"
+            style={{
+              gridTemplateColumns: "21% 21% 1fr",
+              gridTemplateRows: "1fr 1fr",
+            }}
+          >
+            {/* PHONE 1 */}
+            <div
+              className="rise relative rounded-2xl overflow-hidden"
+              style={{ "--i": 3, gridRow: "1 / 3" }}
+            >
+              <img
+                src="screenshots/IMG_8420.PNG"
+                alt="SafeChain MK installed as PWA"
+                className="absolute inset-0 w-full h-full"
+                style={{ objectFit: "contain" }}
+              />
             </div>
 
-            <div className="rise relative rounded-2xl overflow-hidden"
-                 style={{ "--i": 2, gridRow: "1 / 3" }}>
-              <img src="screenshots/IMG_8420.PNG" alt="SafeChain MK installed as PWA"
-                   className="absolute inset-0 w-full h-full"
-                   style={{ objectFit: "contain" }} />
+            {/* PHONE 2 */}
+            <div
+              className="rise relative rounded-2xl overflow-hidden"
+              style={{ "--i": 4, gridRow: "1 / 3" }}
+            >
+              <img
+                src="screenshots/IMG_8421.PNG"
+                alt="SafeChain MK mobile verify flow"
+                className="absolute inset-0 w-full h-full"
+                style={{ objectFit: "contain" }}
+              />
             </div>
 
-            <div className="rise relative rounded-2xl overflow-hidden"
-                 style={{ "--i": 3 }}>
-              <img src="screenshots/2.png" alt="SafeChain MK — violation detail and payment"
-                   className="absolute inset-0 w-full h-full"
-                   style={{ objectFit: "contain" }} />
+            {/* DESKTOP 1 */}
+            <div
+              className="rise relative rounded-2xl overflow-hidden"
+              style={{ "--i": 5 }}
+            >
+              <img
+                src="screenshots/2.png"
+                alt="SafeChain MK violation detail and payment"
+                className="absolute inset-0 w-full h-full"
+                style={{ objectFit: "contain" }}
+              />
             </div>
 
-            <div className="rise relative rounded-2xl overflow-hidden"
-                 style={{ "--i": 4 }}>
-              <img src="screenshots/1.png" alt="SafeChain MK — FAQ page"
-                   className="absolute inset-0 w-full h-full"
-                   style={{ objectFit: "contain" }} />
+            {/* DESKTOP 2 */}
+            <div
+              className="rise relative rounded-2xl overflow-hidden"
+              style={{ "--i": 6 }}
+            >
+              <img
+                src="screenshots/1.png"
+                alt="SafeChain MK FAQ page"
+                className="absolute inset-0 w-full h-full"
+                style={{ objectFit: "contain" }}
+              />
             </div>
           </div>
         </>
