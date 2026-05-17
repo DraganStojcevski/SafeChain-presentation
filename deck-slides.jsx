@@ -657,53 +657,146 @@ const Slide7 = ({ active }) => (
 /* ─────────────────────────  08 — SCENE 02  ─────────────────────── */
 const Slide8 = ({ active }) => (
   <SlideRoot mood="rose">
-    <Frame>
+    <div className="absolute inset-0 grid grid-cols-12 gap-8 items-center"
+         style={{ padding: "clamp(48px,5.8vh,84px) clamp(50px,5.5vw,118px)" }}>
       {active && (
-        <div className="flex gap-9 max-w-[1260px]">
-          <div className="rise w-px shrink-0" style={{ "--i": 0,
-            background: "linear-gradient(180deg, transparent, rgba(255,111,132,0.48) 18%, rgba(97,230,216,0.46) 82%, transparent)" }} />
-          <div className="w-full">
-            <div className="rise" style={{ "--i": 0 }}>
-              <Eyebrow tone="rose">Scene 02 — 07:02, the morning after</Eyebrow>
-            </div>
-
-            <p className="rise display text-white mt-9"
-               style={{ "--i": 1, fontSize: "clamp(30px, 3.4vw, 52px)", lineHeight: 1.2 }}>
-              You wake up. You grab your phone. There is a fine —
-            </p>
-            <p className="rise display mt-5"
-               style={{ "--i": 3, fontSize: "clamp(26px, 2.9vw, 44px)", lineHeight: 1.22, color: "var(--text-dim)" }}>
-              but your car is in the driveway. You were asleep.
-            </p>
-
-            <div className="rise mt-10 panel rounded-2xl flex items-center gap-5 p-6 max-w-3xl"
-                 style={{ "--i": 5 }}>
-              <div className="rounded-xl flex items-center justify-center shrink-0 panel-glass halo-cyan"
-                   style={{ width: 58, height: 58 }}>
-                <I.FileSignature size={26} className="ac-cyan" strokeWidth={1.6} />
+        <>
+          <div className="col-span-5 flex gap-8">
+            <div className="rise w-px shrink-0" style={{ "--i": 0,
+              background: "linear-gradient(180deg, transparent, rgba(255,111,132,0.48) 18%, rgba(97,230,216,0.46) 82%, transparent)" }} />
+            <div className="w-full">
+              <div className="rise" style={{ "--i": 0 }}>
+                <Eyebrow tone="rose">Scene 02 — 07:02, the morning after</Eyebrow>
               </div>
-              <p className="display" style={{ fontSize: "clamp(20px,1.95vw,30px)", lineHeight: 1.3, color: "#fff" }}>
-                In a few taps, the app builds a digitally signed PDF appeal —{" "}
-                <span className="ac-cyan">ready to submit.</span>
-              </p>
-            </div>
 
-            <div className="rise mt-9 flex items-center gap-6" style={{ "--i": 7 }}>
-              {[
-                [I.HelpCircle, "FAQ tailored to your fine"],
-                [I.Smartphone, "Full PWA — no download"],
-                [I.ScanLine, "Answers, the moment you ask"],
-              ].map(([Ic, t], k) => (
-                <div key={k} className="flex items-center gap-2.5">
-                  <Ic size={15} style={{ color: "var(--text-mut)" }} />
-                  <span style={{ fontSize: 13, color: "var(--text-dim)" }}>{t}</span>
+              <p className="rise display text-white mt-9"
+                 style={{ "--i": 1, fontSize: "clamp(29px, 3.2vw, 50px)", lineHeight: 1.2 }}>
+                You wake up. You grab your phone. There is a fine —
+              </p>
+              <p className="rise display mt-5"
+                 style={{ "--i": 2, fontSize: "clamp(25px, 2.65vw, 42px)", lineHeight: 1.22, color: "var(--text-dim)" }}>
+                but your car is in the driveway. You were asleep.
+              </p>
+
+              <div className="rise mt-9 panel rounded-2xl flex items-center gap-5 p-6"
+                   style={{ "--i": 3 }}>
+                <div className="rounded-xl flex items-center justify-center shrink-0 panel-glass halo-cyan"
+                     style={{ width: 58, height: 58 }}>
+                  <I.FileSignature size={26} className="ac-cyan" strokeWidth={1.6} />
                 </div>
-              ))}
+                <p className="display" style={{ fontSize: "clamp(20px,1.8vw,28px)", lineHeight: 1.3, color: "#fff" }}>
+                  In a few taps, the app builds a digitally signed PDF appeal —{" "}
+                  <span className="ac-cyan">ready to submit.</span>
+                </p>
+              </div>
+
+              <div className="rise mt-8 grid grid-cols-1 gap-3" style={{ "--i": 4 }}>
+                {[
+                  [I.HelpCircle, "FAQ tailored to your fine"],
+                  [I.Smartphone, "Full PWA — no download"],
+                  [I.ScanLine, "Answers, the moment you ask"],
+                ].map(([Ic, t], k) => (
+                  <div key={k} className="flex items-center gap-2.5">
+                    <Ic size={15} style={{ color: "var(--text-mut)" }} />
+                    <span style={{ fontSize: 13, color: "var(--text-dim)" }}>{t}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+
+          <div className="col-span-7 relative" style={{ height: "min(72vh, 650px)" }}>
+            <div className="rise absolute right-0 top-0 overflow-hidden rounded-2xl lift"
+                 style={{ "--i": 2, width: "88%", height: "52%",
+                   boxShadow: "0 34px 92px -40px rgba(97,230,216,0.44)" }}>
+              <img
+                src="screenshots/pdf1.png"
+                alt="SafeChain MK app screen showing the signed PDF document ready for download."
+                className="w-full h-full"
+                style={{ objectFit: "contain", objectPosition: "center top" }}
+              />
+            </div>
+
+            <div className="rise absolute left-0 bottom-0 overflow-hidden rounded-xl lift"
+                 style={{ "--i": 5, width: "38%", height: "70%",
+                   boxShadow: "0 38px 96px -38px rgba(0,0,0,0.95), 0 0 58px -34px rgba(255,111,132,0.70)" }}>
+              <img
+                src="screenshots/pdf.png"
+                alt="Generated SafeChain MK PDF appeal document."
+                className="w-full h-full"
+                style={{ objectFit: "contain", objectPosition: "center" }}
+              />
+            </div>
+
+            <div className="rise absolute right-[3%] bottom-[4%] rounded-2xl panel-glass px-5 py-4"
+                 style={{ "--i": 6, width: "54%" }}>
+              <div className="flex items-center gap-3">
+                <div className="rounded-xl flex items-center justify-center shrink-0"
+                     style={{ width: 44, height: 44, background: "rgba(97,230,216,0.10)",
+                       border: "1px solid rgba(97,230,216,0.28)" }}>
+                  <I.CircleCheck size={20} className="ac-cyan" strokeWidth={1.8} />
+                </div>
+                <div>
+                  <Label>PDF appeal generated</Label>
+                  <div className="display text-white mt-1" style={{ fontSize: "clamp(18px,1.55vw,24px)", lineHeight: 1.16 }}>
+                    Signed, previewed, and ready to file.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
       )}
-    </Frame>
+    </div>
+  </SlideRoot>
+);
+
+/* ─────────────────────── 09.5 — APP SCREENSHOTS ────────────────── */
+const Slide8_5 = ({ active }) => (
+  <SlideRoot mood="cyan">
+    <div className="absolute inset-0 flex flex-col"
+         style={{ padding: "clamp(40px,5vh,72px) clamp(50px,5.5vw,118px)" }}>
+      {active && (
+        <>
+          <div className="rise shrink-0 mb-6" style={{ "--i": 0 }}>
+            <Eyebrow tone="cyan">Live product · SafeChain MK</Eyebrow>
+          </div>
+
+          {/* 3-col grid: phones span full height left, desktops stack right */}
+          <div className="flex-1 min-h-0 grid gap-4"
+               style={{ gridTemplateColumns: "21% 21% 1fr", gridTemplateRows: "1fr 1fr" }}>
+
+            <div className="rise relative rounded-2xl overflow-hidden"
+                 style={{ "--i": 1, gridRow: "1 / 3" }}>
+              <img src="screenshots/IMG_8421.PNG" alt="SafeChain MK mobile verify flow"
+                   className="absolute inset-0 w-full h-full"
+                   style={{ objectFit: "contain" }} />
+            </div>
+
+            <div className="rise relative rounded-2xl overflow-hidden"
+                 style={{ "--i": 2, gridRow: "1 / 3" }}>
+              <img src="screenshots/IMG_8420.PNG" alt="SafeChain MK installed as PWA"
+                   className="absolute inset-0 w-full h-full"
+                   style={{ objectFit: "contain" }} />
+            </div>
+
+            <div className="rise relative rounded-2xl overflow-hidden"
+                 style={{ "--i": 3 }}>
+              <img src="screenshots/2.png" alt="SafeChain MK — violation detail and payment"
+                   className="absolute inset-0 w-full h-full"
+                   style={{ objectFit: "contain" }} />
+            </div>
+
+            <div className="rise relative rounded-2xl overflow-hidden"
+                 style={{ "--i": 4 }}>
+              <img src="screenshots/1.png" alt="SafeChain MK — FAQ page"
+                   className="absolute inset-0 w-full h-full"
+                   style={{ objectFit: "contain" }} />
+            </div>
+          </div>
+        </>
+      )}
+    </div>
   </SlideRoot>
 );
 
@@ -938,7 +1031,7 @@ const Slide11 = ({ active, onCTA }) => (
   </SlideRoot>
 );
 
-window.Slides = [Slide1, Slide2, Slide2_5, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9, Slide10, Slide11];
+window.Slides = [Slide1, Slide2, Slide2_5, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide8_5, Slide9, Slide10, Slide11];
 window.SlideMeta = [
   { label: "01 — Title",            short: "Title" },
   { label: "02 — The Scene",        short: "Scene" },
@@ -949,7 +1042,8 @@ window.SlideMeta = [
   { label: "07 — The Platform",     short: "Platform" },
   { label: "08 — On-Chain Trust",   short: "Trust" },
   { label: "09 — The Morning After",short: "Scene II" },
-  { label: "10 — The Market",       short: "Market" },
-  { label: "11 — Business Model",   short: "Model" },
-  { label: "12 — The Close",        short: "Close" },
+  { label: "10 — App Screenshots",  short: "Product" },
+  { label: "11 — The Market",       short: "Market" },
+  { label: "12 — Business Model",   short: "Model" },
+  { label: "13 — The Close",        short: "Close" },
 ];
