@@ -156,46 +156,77 @@ const Slide2 = ({ active }) => (
 
 /* ─────────────────────────  02.5 — EVIDENCE WALL  ──────────────── */
 const EVIDENCE = [
-  { kind: "sms",  src: "evidence/sms-01-mvr-letterhead.jpg", caption: "MVR letterhead · +63 928…",  label: "Fraudulent SMS — screenshot" },
-  { kind: "sms",  src: "evidence/sms-02-final-notice.png",   caption: "“Final notice” · 14 threads", label: "Fraudulent SMS — screenshot" },
-  { kind: "sms",  src: "evidence/sms-05-morocco-number.png", caption: "Speeding fine · +212 Morocco", label: "Fraudulent SMS — screenshot" },
-  { kind: "sms",  src: "evidence/sms-07-mvr-sp.jpg",         caption: "MVR-SP/2026-05821/SK · +63",  label: "Fraudulent SMS — screenshot" },
-  { kind: "news", src: "evidence/news-01-frontline.png",     caption: "FRONTLINE — official MVR warning", label: "Press coverage" },
-  { kind: "site", src: "evidence/phishing-site-mvrgov-uno.png", caption: "mvrgov.uno — live phishing site", label: "Phishing site — capture" },
+  { kind: "coverage", src: "screenshots/689031267_2425515537910389_4188551737695946276_n.png", caption: "PRESS24 — citizens warned about fake fines", label: "Press coverage", x: 2, y: 3, w: 20, h: 76, r: -4, z: 8, fit: "cover", pos: "50% 17%" },
+  { kind: "search", src: "screenshots/image1.png", caption: "Google results — warnings across multiple outlets", label: "Search signal", x: 24, y: 2, w: 43, h: 25, r: 1.5, z: 3, fit: "cover", pos: "center top" },
+  { kind: "coverage", src: "screenshots/image.png", caption: "National media — false SMS fines circulating", label: "News article", x: 59, y: 8, w: 38, h: 33, r: -1.5, z: 4, fit: "cover", pos: "center top" },
+  { kind: "sms", src: "evidence/sms-01-mvr-letterhead.jpg", caption: "MVR letterhead · +63 928…", label: "Fraudulent SMS", x: 21, y: 26, w: 18, h: 47, r: 3, z: 10, fit: "contain" },
+  { kind: "sms", src: "evidence/sms-02-final-notice.png", caption: "Final notice · fear trigger", label: "Fraudulent SMS", x: 35, y: 28, w: 18, h: 48, r: -2.5, z: 12, fit: "contain" },
+  { kind: "sms", src: "evidence/sms-05-morocco-number.png", caption: "Speeding fine · +212 Morocco", label: "Foreign sender", x: 51, y: 33, w: 18, h: 47, r: 4, z: 11, fit: "contain" },
+  { kind: "sms", src: "evidence/sms-07-mvr-sp.jpg", caption: "MVR-SP/2026-05821/SK", label: "Fake reference", x: 67, y: 35, w: 16, h: 40, r: -3, z: 10, fit: "contain" },
+  { kind: "site", src: "evidence/phishing-site-mvrgov-uno.png", caption: "mvrgov.uno — live phishing site", label: "Phishing site", x: 55, y: 60, w: 29, h: 31, r: 1.8, z: 6, fit: "cover", pos: "center top" },
+  { kind: "news", src: "evidence/news-01-frontline.png", caption: "FRONTLINE — official MVR warning", label: "Press coverage", x: 6, y: 66, w: 29, h: 27, r: 2, z: 5, fit: "cover", pos: "center top" },
+  { kind: "sms", src: "evidence/sms-03-with-fake-url.png", caption: "Fake URL embedded in message", label: "Fake link", x: 82, y: 28, w: 15, h: 36, r: 3.5, z: 7, fit: "contain" },
+  { kind: "sms", src: "evidence/sms-04-mvrgov-uno-link.png", caption: "mvrgov.uno payment path", label: "Fake domain", x: 80, y: 60, w: 17, h: 31, r: -2.5, z: 8, fit: "contain" },
+  { kind: "sms", src: "evidence/sms-06-mvrgovm-forum.png", caption: "Copied government language", label: "Impersonation", x: 37, y: 69, w: 17, h: 27, r: -4, z: 7, fit: "contain" },
+  { kind: "sms", src: "evidence/sms-08-mac.png", caption: "Mobile thread · scam wave", label: "Phone evidence", x: 20, y: 53, w: 17, h: 35, r: 5, z: 9, fit: "contain" },
+  { kind: "sms", src: "evidence/sms-09-uk-finessai.png", caption: "UK-hosted fine scam pattern", label: "Pattern match", x: 71, y: 14, w: 16, h: 31, r: 3, z: 6, fit: "contain" },
 ];
 
-const EvidenceCard = ({ entry, idx }) => {
-  const isSms  = entry.kind === "sms";
-  const accent = isSms ? "var(--rose)" : "var(--amber)";
-  const IconC  = isSms ? I.AlertTriangle : entry.kind === "site" ? I.Globe : I.Newspaper;
-  const tag    = isSms ? "VICTIM" : "PUBLIC";
+const EvidenceCollageCard = ({ entry, idx }) => {
+  const isSms = entry.kind === "sms";
+  const accent = isSms ? "var(--rose)" : entry.kind === "site" ? "var(--cyan)" : "var(--amber)";
+  const IconC = isSms ? I.AlertTriangle : entry.kind === "site" ? I.Globe : entry.kind === "search" ? I.ScanLine : I.Newspaper;
   return (
-    <div className="rise h-full min-h-0" style={{ "--i": idx }}>
-      <div className="panel lift rounded-xl h-full flex flex-col overflow-hidden">
-        <div className="flex items-center justify-between gap-2 px-3 py-2 shrink-0"
-             style={{ borderBottom: "1px solid var(--hairline)" }}>
-          <div className="flex items-center gap-1.5 min-w-0">
-            <IconC size={11} style={{ color: accent }} />
-            <span className="font-mono uppercase truncate"
-                  style={{ fontSize: 8.5, letterSpacing: "0.12em", color: "var(--text-dim)" }}>
-              {entry.label}
-            </span>
-          </div>
-          <span className="font-mono shrink-0" style={{ fontSize: 8, color: "var(--text-mut)" }}>
-            EXH·{String(idx + 1).padStart(2, "0")}
+    <div className="rise absolute" style={{
+      "--i": Math.min(idx, 10),
+      left: `${entry.x}%`,
+      top: `${entry.y}%`,
+      width: `${entry.w}%`,
+      height: `${entry.h}%`,
+      zIndex: entry.z,
+      transform: `rotate(${entry.r}deg)`,
+      transformOrigin: "center center",
+    }}>
+      <div className="relative h-full rounded-xl overflow-hidden lift" style={{
+        background: "#05060D",
+        border: `1px solid ${isSms ? "rgba(255,111,132,0.30)" : "rgba(214,180,95,0.24)"}`,
+        boxShadow: `0 28px 70px -34px rgba(0,0,0,0.95), 0 0 46px -30px ${accent}`,
+      }}>
+        <img
+          src={entry.src}
+          alt={entry.caption}
+          className="absolute inset-0 w-full h-full"
+          style={{
+            objectFit: entry.fit || "cover",
+            objectPosition: entry.pos || "center",
+            padding: entry.fit === "contain" ? 4 : 0,
+            filter: "saturate(0.92) contrast(1.04)",
+          }}
+        />
+        <div className="absolute inset-x-0 top-0 flex items-center justify-between gap-2 px-2.5 py-1.5" style={{
+          background: "linear-gradient(180deg, rgba(3,5,12,0.88), rgba(3,5,12,0.42) 76%, transparent)",
+        }}>
+          <span className="flex items-center gap-1.5 min-w-0">
+            <IconC size={10.5} style={{ color: accent }} />
+            <span className="font-mono uppercase truncate" style={{
+              fontSize: 8.5,
+              letterSpacing: "0.13em",
+              color: "rgba(255,255,255,0.78)",
+            }}>{entry.label}</span>
           </span>
+          <span className="font-mono shrink-0" style={{
+            fontSize: 8,
+            letterSpacing: "0.08em",
+            color: "rgba(255,255,255,0.45)",
+          }}>EXH {String(idx + 1).padStart(2, "0")}</span>
         </div>
-        <div className="flex-1 relative overflow-hidden min-h-0" style={{ background: "#05060D" }}>
-          <img src={entry.src} alt={entry.caption}
-               className="absolute inset-0 w-full h-full object-contain" style={{ padding: 3 }} />
-        </div>
-        <div className="flex items-center justify-between gap-2 px-3 py-2 shrink-0"
-             style={{ borderTop: "1px solid var(--hairline)" }}>
-          <span className="font-mono truncate" style={{ fontSize: 9, color: "var(--text-dim)" }}>
-            {entry.caption}
-          </span>
-          <span className="font-mono shrink-0"
-                style={{ fontSize: 8, letterSpacing: "0.1em", color: accent }}>{tag}</span>
+        <div className="absolute inset-x-0 bottom-0 px-2.5 py-2" style={{
+          background: "linear-gradient(0deg, rgba(3,5,12,0.90), rgba(3,5,12,0.52) 72%, transparent)",
+        }}>
+          <div className="font-mono truncate" style={{
+            fontSize: 8.5,
+            color: "rgba(255,255,255,0.66)",
+          }}>{entry.caption}</div>
         </div>
       </div>
     </div>
@@ -203,45 +234,69 @@ const EvidenceCard = ({ entry, idx }) => {
 };
 
 const Slide2_5 = ({ active }) => {
-  const sms  = EVIDENCE.filter(e => e.kind === "sms").slice(0, 4);
-  const rest = EVIDENCE.filter(e => e.kind !== "sms").slice(0, 2);
   return (
     <SlideRoot mood="rose">
       <div className="absolute inset-0 flex flex-col"
-           style={{ padding: "clamp(58px,7vh,86px) clamp(40px,3.6vw,76px) clamp(40px,4.4vh,60px)" }}>
+           style={{ padding: "clamp(48px,6vh,72px) clamp(38px,3.8vw,76px) clamp(34px,3.8vh,50px)" }}>
         {active && <>
           <div className="rise flex items-end justify-between gap-6" style={{ "--i": 0 }}>
             <div>
-              <Eyebrow tone="rose">Exhibit — Evidence Wall</Eyebrow>
+              <Eyebrow tone="rose">Public Warning — Evidence Wall</Eyebrow>
               <h2 className="display text-white mt-3.5"
-                  style={{ fontSize: "clamp(26px, 2.7vw, 42px)", lineHeight: 1.08 }}>
-                This is not hypothetical.{" "}
-                <span className="ac-rose">It is happening right now.</span>
+                  style={{ fontSize: "clamp(28px, 3vw, 48px)", lineHeight: 1.04 }}>
+                The scam has escaped the inbox.{" "}
+                <span className="ac-rose">People are already being warned.</span>
               </h2>
             </div>
-            <div className="hidden md:flex items-center gap-2 shrink-0 pb-1">
+            <div className="hidden md:flex items-center gap-2 shrink-0 pb-2">
               <I.AlertTriangle size={13} className="ac-rose" />
-              <Label>{EVIDENCE.length} exhibits · collected 2026</Label>
+              <Label>{EVIDENCE.length} exhibits · SMS · news · search · phishing site</Label>
             </div>
           </div>
 
-          <div className="grid grid-cols-5 gap-3.5 mt-6 flex-1 min-h-0"
-               style={{ gridTemplateRows: "1fr 1fr" }}>
-            {sms.map((e, i) => (
-              <div key={`s${i}`} className="row-span-2 min-h-0 h-full">
-                <EvidenceCard entry={e} idx={i} />
-              </div>
+          <div className="rise relative mt-5 flex-1 min-h-0 overflow-hidden rounded-2xl panel-quiet" style={{
+            "--i": 1,
+            background:
+              "radial-gradient(ellipse 58% 54% at 50% 48%, rgba(255,111,132,0.12), transparent 68%), linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.008))",
+          }}>
+            <div className="absolute inset-0 opacity-40" style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+              backgroundSize: "72px 72px",
+              maskImage: "radial-gradient(ellipse 80% 72% at 50% 46%, #000 18%, transparent 88%)",
+            }} />
+            <div className="absolute left-[43%] top-[39%] -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{
+              fontFamily: "'Space Grotesk', system-ui, sans-serif",
+              fontSize: "clamp(74px, 10vw, 154px)",
+              fontWeight: 700,
+              letterSpacing: "-0.08em",
+              lineHeight: 0.86,
+              color: "rgba(255,111,132,0.055)",
+              whiteSpace: "nowrap",
+            }}>
+              REAL SCAM
+            </div>
+            {EVIDENCE.map((entry, i) => (
+              <EvidenceCollageCard key={entry.src} entry={entry} idx={i} />
             ))}
-            {rest.map((e, i) => (
-              <div key={`r${i}`} className="min-h-0 h-full">
-                <EvidenceCard entry={e} idx={4 + i} />
+            <div className="absolute left-5 bottom-5 z-30 panel rounded-2xl px-5 py-4 max-w-xl" style={{
+              borderColor: "rgba(255,111,132,0.24)",
+              boxShadow: "0 24px 80px -38px rgba(255,111,132,0.62)",
+            }}>
+              <div className="flex items-center gap-2">
+                <I.AlertTriangle size={15} className="ac-rose" />
+                <Label style={{ color: "rgba(255,255,255,0.68)" }}>Awareness gap</Label>
               </div>
-            ))}
+              <p className="display mt-2" style={{ fontSize: "clamp(17px,1.7vw,25px)", lineHeight: 1.18, color: "#fff" }}>
+                If citizens need Google and news articles to know what is real,
+                the system is already broken.
+              </p>
+            </div>
           </div>
 
-          <p className="rise mt-5 font-mono text-center" style={{ "--i": 8,
-             fontSize: 11, letterSpacing: "0.04em", color: "var(--text-dim)" }}>
-            Real messages. Real victims. Real headlines. — This is the problem we set out to solve.
+          <p className="rise mt-4 font-mono text-center" style={{ "--i": 12,
+             fontSize: 11, letterSpacing: "0.08em", color: "var(--text-dim)" }}>
+            Real screenshots · real media coverage · real confusion · one missing verification layer
           </p>
         </>}
       </div>
