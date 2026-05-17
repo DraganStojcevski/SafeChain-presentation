@@ -21,7 +21,8 @@ const Particles = ({ count = 13, tint = "142,164,255" }) => {
       delay: -seededRand(i + 19) * (28 + seededRand(i + 13) * 30),
       op:    0.16 + seededRand(i + 23) * 0.38,
     }))
-  ), [count]);
+  ), [count]); 
+  
   return (
     <>
       {items.map(p => (
