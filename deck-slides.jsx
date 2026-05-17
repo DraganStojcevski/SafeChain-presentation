@@ -115,19 +115,13 @@ const Slide1 = ({ active }) => (
 /* ─────────────────────────  02 — THE SCENE  ────────────────────── */
 const Slide2 = ({ active }) => (
   <SlideRoot mood="rose">
-    <div className="absolute inset-0 flex flex-col"
-         style={{ padding: "clamp(52px,6vh,82px) clamp(42px,4.4vw,86px) clamp(36px,4vh,56px)" }}>
+    <div className="absolute inset-0 flex items-center justify-center"
+         style={{ padding: "clamp(42px,5.8vh,76px) clamp(24px,3vw,54px) clamp(44px,5.6vh,76px)" }}>
       {active && <>
-        <div className="rise flex items-center justify-between gap-6" style={{ "--i": 0 }}>
-          <Eyebrow tone="rose">Scene 01 — Citizen Journey</Eyebrow>
-          <div className="hidden md:flex items-center gap-2">
-            <I.AlertTriangle size={13} className="ac-rose" />
-            <Label>Storyboard · scam awareness sequence</Label>
-          </div>
-        </div>
-
-        <div className="rise relative mt-5 flex-1 min-h-0 rounded-2xl overflow-hidden panel" style={{
-          "--i": 1,
+        <div className="rise relative rounded-2xl overflow-hidden panel" style={{
+          "--i": 0,
+          width: "min(96vw, 132vh)",
+          aspectRatio: "3 / 2",
           borderColor: "rgba(255,111,132,0.18)",
           boxShadow: "0 34px 90px -42px rgba(255,111,132,0.42), inset 0 1px 0 rgba(255,255,255,0.06)",
         }}>
@@ -141,14 +135,6 @@ const Slide2 = ({ active }) => (
               background: "#030817",
             }}
           />
-          <div className="absolute inset-x-0 top-0 pointer-events-none" style={{
-            height: "18%",
-            background: "linear-gradient(180deg, rgba(2,4,10,0.56), transparent)",
-          }} />
-          <div className="absolute inset-x-0 bottom-0 pointer-events-none" style={{
-            height: "16%",
-            background: "linear-gradient(0deg, rgba(2,4,10,0.48), transparent)",
-          }} />
         </div>
       </>}
     </div>
