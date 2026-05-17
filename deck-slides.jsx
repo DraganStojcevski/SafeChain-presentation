@@ -707,8 +707,7 @@ const Slide8 = ({ active }) => (
 
           <div className="col-span-7 relative" style={{ height: "min(72vh, 650px)" }}>
             <div className="rise absolute right-0 top-0 overflow-hidden rounded-2xl lift"
-                 style={{ "--i": 2, width: "88%", height: "52%",
-                   boxShadow: "0 34px 92px -40px rgba(97,230,216,0.44)" }}>
+                 style={{ "--i": 2, width: "88%", height: "52%" }}>
               <img
                 src="screenshots/pdf1.png"
                 alt="SafeChain MK app screen showing the signed PDF document ready for download."
@@ -718,8 +717,7 @@ const Slide8 = ({ active }) => (
             </div>
 
             <div className="rise absolute left-0 bottom-0 overflow-hidden rounded-xl lift"
-                 style={{ "--i": 5, width: "38%", height: "70%",
-                   boxShadow: "0 38px 96px -38px rgba(0,0,0,0.95), 0 0 58px -34px rgba(255,111,132,0.70)" }}>
+                 style={{ "--i": 5, width: "38%", height: "70%" }}>
               <img
                 src="screenshots/pdf.png"
                 alt="Generated SafeChain MK PDF appeal document."
@@ -768,30 +766,30 @@ const Slide8_5 = ({ active }) => (
 
             <div className="rise relative rounded-2xl overflow-hidden"
                  style={{ "--i": 1, gridRow: "1 / 3" }}>
-              <img src="screenshots/IMG_8421.PNG" alt="SafeChain MK mobile verify flow"
+              <img src="screenshots/IMG_8420.PNG" alt="SafeChain MK installed as PWA"
                    className="absolute inset-0 w-full h-full"
-                   style={{ objectFit: "contain" }} />
+                   style={{ objectFit: "contain", padding: "clamp(14px,1.1vw,22px)" }} />
             </div>
 
             <div className="rise relative rounded-2xl overflow-hidden"
                  style={{ "--i": 2, gridRow: "1 / 3" }}>
-              <img src="screenshots/IMG_8420.PNG" alt="SafeChain MK installed as PWA"
+              <img src="screenshots/IMG_8421.PNG" alt="SafeChain MK mobile verify flow"
                    className="absolute inset-0 w-full h-full"
-                   style={{ objectFit: "contain" }} />
+                   style={{ objectFit: "contain", padding: "clamp(14px,1.1vw,22px)" }} />
             </div>
 
             <div className="rise relative rounded-2xl overflow-hidden"
                  style={{ "--i": 3 }}>
               <img src="screenshots/2.png" alt="SafeChain MK — violation detail and payment"
                    className="absolute inset-0 w-full h-full"
-                   style={{ objectFit: "contain" }} />
+                   style={{ objectFit: "contain", padding: "clamp(14px,1.1vw,22px)" }} />
             </div>
 
             <div className="rise relative rounded-2xl overflow-hidden"
                  style={{ "--i": 4 }}>
               <img src="screenshots/1.png" alt="SafeChain MK — FAQ page"
                    className="absolute inset-0 w-full h-full"
-                   style={{ objectFit: "contain" }} />
+                   style={{ objectFit: "contain", padding: "clamp(14px,1.1vw,22px)" }} />
             </div>
           </div>
         </>
