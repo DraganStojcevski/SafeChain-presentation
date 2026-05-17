@@ -115,42 +115,43 @@ const Slide1 = ({ active }) => (
 /* ─────────────────────────  02 — THE SCENE  ────────────────────── */
 const Slide2 = ({ active }) => (
   <SlideRoot mood="rose">
-    <Frame>
-      {active && (
-        <div className="flex gap-9 max-w-[1240px]">
-          <div className="rise w-px shrink-0" style={{ "--i": 0,
-            background: "linear-gradient(180deg, transparent, rgba(255,111,132,0.55) 22%, rgba(255,111,132,0.55) 78%, transparent)" }} />
-          <div>
-            <div className="rise" style={{ "--i": 0 }}>
-              <Eyebrow tone="rose">Scene 01 — 08:14, a Tuesday in Skopje</Eyebrow>
-            </div>
-
-            <p className="rise display text-white mt-9"
-               style={{ "--i": 1, fontSize: "clamp(32px, 3.5vw, 54px)", lineHeight: 1.22 }}>
-              You leave home. You get in your car. You drive past the
-              speed cameras. You arrive — and your phone buzzes.
-            </p>
-
-            <p className="rise display mt-9 ac-rose glow-rose"
-               style={{ "--i": 3, fontSize: "clamp(27px, 3vw, 46px)", lineHeight: 1.24 }}>
-              A traffic-violation SMS. Instinctively, you tap to pay.
-            </p>
-
-            <p className="rise display-tight text-white glow-soft mt-9"
-               style={{ "--i": 5, fontSize: "clamp(34px, 4.1vw, 66px)" }}>
-              And just like that — your money is gone.
-            </p>
-
-            <div className="rise mt-10 flex items-center gap-3" style={{ "--i": 7 }}>
-              <I.AlertTriangle size={14} className="ac-rose" />
-              <span className="font-mono" style={{ fontSize: 12.5, color: "var(--text-dim)" }}>
-                You just paid a scammer — and you had no way to know.
-              </span>
-            </div>
+    <div className="absolute inset-0 flex flex-col"
+         style={{ padding: "clamp(52px,6vh,82px) clamp(42px,4.4vw,86px) clamp(36px,4vh,56px)" }}>
+      {active && <>
+        <div className="rise flex items-center justify-between gap-6" style={{ "--i": 0 }}>
+          <Eyebrow tone="rose">Scene 01 — Citizen Journey</Eyebrow>
+          <div className="hidden md:flex items-center gap-2">
+            <I.AlertTriangle size={13} className="ac-rose" />
+            <Label>Storyboard · scam awareness sequence</Label>
           </div>
         </div>
-      )}
-    </Frame>
+
+        <div className="rise relative mt-5 flex-1 min-h-0 rounded-2xl overflow-hidden panel" style={{
+          "--i": 1,
+          borderColor: "rgba(255,111,132,0.18)",
+          boxShadow: "0 34px 90px -42px rgba(255,111,132,0.42), inset 0 1px 0 rgba(255,255,255,0.06)",
+        }}>
+          <img
+            src="screenshots/slide2.png"
+            alt="Storyboard showing a citizen receiving a fake traffic fine SMS, paying it, losing money, and then learning to verify through SafeChain MK."
+            className="absolute inset-0 w-full h-full"
+            style={{
+              objectFit: "contain",
+              objectPosition: "center",
+              background: "#030817",
+            }}
+          />
+          <div className="absolute inset-x-0 top-0 pointer-events-none" style={{
+            height: "18%",
+            background: "linear-gradient(180deg, rgba(2,4,10,0.56), transparent)",
+          }} />
+          <div className="absolute inset-x-0 bottom-0 pointer-events-none" style={{
+            height: "16%",
+            background: "linear-gradient(0deg, rgba(2,4,10,0.48), transparent)",
+          }} />
+        </div>
+      </>}
+    </div>
   </SlideRoot>
 );
 
