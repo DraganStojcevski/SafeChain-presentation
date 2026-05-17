@@ -100,9 +100,23 @@
                  animation-delay: calc(var(--i,0) * 85ms + 130ms); }
     .rise-slow { animation: riseUp 1.2s cubic-bezier(.2,.7,.2,1) backwards;
                  animation-delay: calc(var(--i,0) * 120ms + 160ms); }
+
+    @keyframes evidencePop {
+      0%   { opacity: 0; transform: translate3d(0,26px,0) scale(.82) rotate(var(--rot, 0deg)); filter: blur(8px); }
+      68%  { opacity: 1; transform: translate3d(0,-4px,0) scale(1.035) rotate(var(--rot, 0deg)); filter: blur(0); }
+      100% { opacity: 1; transform: translate3d(0,0,0) scale(1) rotate(var(--rot, 0deg)); filter: blur(0); }
+    }
+    .evidence-pop {
+      opacity: 0;
+      transform: rotate(var(--rot, 0deg));
+      animation: evidencePop .62s cubic-bezier(.2,.8,.18,1) both;
+      animation-delay: calc(var(--i,0) * 170ms + 420ms);
+      will-change: transform, opacity, filter;
+    }
     @media (prefers-reduced-motion: reduce) {
-      .rise, .rise-slow, .slide-enter, .slide-leave,
+      .rise, .rise-slow, .evidence-pop, .slide-enter, .slide-leave,
       .breathe, .drift-a, .drift-b, .particle, .spin-slow { animation: none !important; }
+      .evidence-pop { opacity: 1; transform: rotate(var(--rot, 0deg)); filter: none; }
     }
 
     /* ——— Typography helpers ——— */

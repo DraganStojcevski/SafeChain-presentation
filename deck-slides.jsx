@@ -177,14 +177,14 @@ const EvidenceCollageCard = ({ entry, idx }) => {
   const accent = isSms ? "var(--rose)" : entry.kind === "site" ? "var(--cyan)" : "var(--amber)";
   const IconC = isSms ? I.AlertTriangle : entry.kind === "site" ? I.Globe : entry.kind === "search" ? I.ScanLine : I.Newspaper;
   return (
-    <div className="rise absolute" style={{
-      "--i": Math.min(idx, 10),
+    <div className="evidence-pop absolute" style={{
+      "--i": idx,
+      "--rot": `${entry.r}deg`,
       left: `${entry.x}%`,
       top: `${entry.y}%`,
       width: `${entry.w}%`,
       height: `${entry.h}%`,
       zIndex: entry.z,
-      transform: `rotate(${entry.r}deg)`,
       transformOrigin: "center center",
     }}>
       <div className="relative h-full rounded-xl overflow-hidden lift" style={{
