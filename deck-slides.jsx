@@ -116,26 +116,21 @@ const Slide1 = ({ active }) => (
 const Slide2 = ({ active }) => (
   <SlideRoot mood="rose">
     <div className="absolute inset-0 flex items-center justify-center"
-         style={{ padding: "clamp(42px,5.8vh,76px) clamp(24px,3vw,54px) clamp(44px,5.6vh,76px)" }}>
+         style={{ padding: "clamp(34px,4.2vh,58px) clamp(28px,3.2vw,54px)" }}>
       {active && <>
-        <div className="rise relative rounded-2xl overflow-hidden panel" style={{
+        <img
+          src="screenshots/slide2.png"
+          alt="Storyboard showing a citizen receiving a fake traffic fine SMS, paying it, losing money, and then learning to verify through SafeChain MK."
+          className="rise"
+          style={{
           "--i": 0,
-          width: "min(96vw, 132vh)",
-          aspectRatio: "3 / 2",
-          borderColor: "rgba(255,111,132,0.18)",
-          boxShadow: "0 34px 90px -42px rgba(255,111,132,0.42), inset 0 1px 0 rgba(255,255,255,0.06)",
-        }}>
-          <img
-            src="screenshots/slide2.png"
-            alt="Storyboard showing a citizen receiving a fake traffic fine SMS, paying it, losing money, and then learning to verify through SafeChain MK."
-            className="absolute inset-0 w-full h-full"
-            style={{
-              objectFit: "contain",
-              objectPosition: "center",
-              background: "#030817",
-            }}
-          />
-        </div>
+          display: "block",
+          width: "min(92vw, 126vh)",
+          maxHeight: "84vh",
+          height: "auto",
+          objectFit: "contain",
+        }}
+        />
       </>}
     </div>
   </SlideRoot>
@@ -531,7 +526,7 @@ const Slide6 = ({ active }) => (
                  style={{ aspectRatio: "16 / 10", background: "linear-gradient(160deg,#0B0C16,#08090F)",
                           border: "1px solid var(--hairline)" }}>
               <video
-                src="video-output-3335C52B-C281-44BD-865E-21B803E43B4F-2.MP4"
+                src="demo-video.mp4"
                 className="absolute inset-0 w-full h-full"
                 style={{ objectFit: "contain", background: "#030817" }}
                 autoPlay={active}
